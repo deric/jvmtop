@@ -5,4 +5,4 @@ Priority: low
 Architecture: all
 Description: [[description]]
 Maintainer: patric-r
-Depends: default-jre | java8-runtime
+Suggests: default-jre | java8-runtime | java-sdk-headless
