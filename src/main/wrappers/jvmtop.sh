@@ -8,7 +8,7 @@ DIR=$( cd $(dirname $0) ; pwd -P )
 
 if [ -z "$JAVA_HOME" ] ; then
         JAVA_HOME=`readlink -f \`which java 2>/dev/null\` 2>/dev/null | \
-        sed 's/\/bin\/java//'`
+        sed 's:/bin/java::' | sed 's:/jre$::'`
 fi
 
 TOOLSJAR="$JAVA_HOME/lib/tools.jar"
@@ -18,6 +18,6 @@ if [ ! -f "$TOOLSJAR" ] ; then
         exit 1
 fi
 
-"$JAVA_HOME"/bin/java $JAVA_OPTS -cp "$DIR/jvmtop.jar:$TOOLSJAR" \
+"$JAVA_HOME"/bin/java $JAVA_OPTS -cp "$DIR/jvmtop.jar:$TOOLSJAR:/usr/share/java/jvmtop.jar" \
 com.jvmtop.JvmTop "$@"
 exit $?
